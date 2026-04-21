@@ -73,7 +73,7 @@
             letter-spacing: 1px;
         }
 
-        
+        /* Ajuste de la Lupa (Izquierda y en punta) */
         .mag-glass {
             display: inline-block;
             width: 0.65em;
@@ -89,15 +89,15 @@
             content: '';
             position: absolute;
             top: 75%;
-            right: 75%; 
+            right: 75%; /* Lo ancla al borde inferior izquierdo */
             width: 0.4em;
             height: 0.13em;
             background-color: white;
-            
+            /* Crea la forma de punta en el lado derecho del mango (donde toca el círculo) */
             clip-path: polygon(100% 50%, 0 10%, 0 90%);
-            transform: rotate(45deg); 
-            transform-origin: right center; 
-            margin-top: -0.065em; 
+            transform: rotate(45deg); /* Lo inclina hacia abajo a la izquierda */
+            transform-origin: right center; /* Eje de rotación exactamente en la punta */
+            margin-top: -0.065em; /* Centrado vertical perfecto */
         }
         
         .animated-subtitle {
