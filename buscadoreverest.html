@@ -24,7 +24,7 @@
             background-color: #273580; 
             color: white; 
             width: 100%; 
-            padding: 40px 0 20px 0; 
+            padding: 40px 0 15px 0; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
@@ -39,6 +39,15 @@
             flex-wrap: wrap;
             width: 90%;
             max-width: 900px;
+        }
+
+        .logo-link {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .logo-link:active {
+            transform: scale(0.95);
         }
 
         .school-logo {
@@ -64,11 +73,12 @@
             letter-spacing: 1px;
         }
 
+        /* Ajuste de la Lupa */
         .mag-glass {
             display: inline-block;
             width: 0.65em;
             height: 0.65em;
-            border: 0.12em solid white;
+            border: 0.11em solid white;
             border-radius: 50%;
             position: relative;
             margin: 0 0.05em;
@@ -78,13 +88,14 @@
         .mag-glass::after {
             content: '';
             position: absolute;
-            bottom: -0.15em;
-            right: -0.25em;
+            top: 80%;
+            left: 80%;
             width: 0.35em;
-            height: 0.12em;
+            height: 0.11em;
             background-color: white;
             transform: rotate(45deg);
             transform-origin: top left;
+            border-radius: 2px;
         }
         
         .animated-subtitle {
@@ -109,13 +120,23 @@
             50% { opacity: 0; }
         }
 
+        /* Textos más chicos y translúcidos */
         .header-footer {
-            margin-top: 40px;
-            font-size: 1.1rem;
+            margin-top: 35px;
+            font-size: 0.85rem;
             font-style: italic;
-            opacity: 0.9;
+            opacity: 0.5;
             text-align: center;
             font-family: 'Trebuchet MS', Arial, sans-serif;
+        }
+
+        .header-footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .header-footer a:hover {
+            text-decoration: underline;
         }
         
         .search-container { 
@@ -167,7 +188,9 @@
 
     <div class="header">
         <div class="header-main">
-            <img src="https://colegioeverest.github.io/BuscadorEverest/colegioeverest.png" alt="Logo Colegio Everest" class="school-logo">
+            <a href="#" onclick="window.location.reload(true); return false;" class="logo-link" title="Forzar actualización del buscador">
+                <img src="https://colegioeverest.github.io/BuscadorEverest/colegioeverest.png" alt="Logo Colegio Everest" class="school-logo">
+            </a>
             <div class="header-text">
                 <div class="title-buscador">Buscad<span class="mag-glass"></span>r</div>
                 <div class="animated-subtitle">
@@ -176,7 +199,7 @@
             </div>
         </div>
         <div class="header-footer">
-            Development by EVERTICS &bull; Powered by Google
+            Development by EVERTICS &bull; Powered by Google &bull; <a href="https://www.colegioeverest.cl" target="_blank">colegioeverest.cl</a>
         </div>
     </div>
 
