@@ -73,7 +73,7 @@
             letter-spacing: 1px;
         }
 
-        /* Ajuste de la Lupa */
+        
         .mag-glass {
             display: inline-block;
             width: 0.65em;
@@ -88,14 +88,16 @@
         .mag-glass::after {
             content: '';
             position: absolute;
-            top: 80%;
-            left: 80%;
-            width: 0.35em;
-            height: 0.11em;
+            top: 75%;
+            right: 75%; 
+            width: 0.4em;
+            height: 0.13em;
             background-color: white;
-            transform: rotate(45deg);
-            transform-origin: top left;
-            border-radius: 2px;
+            
+            clip-path: polygon(100% 50%, 0 10%, 0 90%);
+            transform: rotate(45deg); 
+            transform-origin: right center; 
+            margin-top: -0.065em; 
         }
         
         .animated-subtitle {
@@ -120,7 +122,6 @@
             50% { opacity: 0; }
         }
 
-        /* Textos más chicos y translúcidos */
         .header-footer {
             margin-top: 35px;
             font-size: 0.85rem;
