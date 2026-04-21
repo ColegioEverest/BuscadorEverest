@@ -68,42 +68,24 @@
             font-style: italic;
             margin: 0;
             line-height: 1;
-            display: flex;
-            align-items: center;
             letter-spacing: 1px;
-        }
-
-        /* Ajuste de la Lupa (Izquierda y en punta) */
-        .mag-glass {
-            display: inline-block;
-            width: 0.65em;
-            height: 0.65em;
-            border: 0.11em solid white;
-            border-radius: 50%;
-            position: relative;
-            margin: 0 0.05em;
-            box-sizing: border-box;
-        }
-
-        .mag-glass::after {
-            content: '';
-            position: absolute;
-            top: 75%;
-            right: 75%; /* Lo ancla al borde inferior izquierdo */
-            width: 0.4em;
-            height: 0.13em;
-            background-color: white;
-            /* Crea la forma de punta en el lado derecho del mango (donde toca el círculo) */
-            clip-path: polygon(100% 50%, 0 10%, 0 90%);
-            transform: rotate(45deg); /* Lo inclina hacia abajo a la izquierda */
-            transform-origin: right center; /* Eje de rotación exactamente en la punta */
-            margin-top: -0.065em; /* Centrado vertical perfecto */
         }
         
         .animated-subtitle {
             font-size: 3rem;
             margin-top: 5px;
             min-height: 3.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lupa-icon {
+            height: 1em;
+            width: auto;
+        }
+
+        .typewriter-wrapper {
             display: flex;
             align-items: center;
         }
@@ -189,13 +171,16 @@
 
     <div class="header">
         <div class="header-main">
-            <a href="#" onclick="window.location.reload(true); return false;" class="logo-link" title="Forzar actualización del buscador">
+            <a href="#" onclick="window.location.reload(true); return false;" class="logo-link">
                 <img src="https://colegioeverest.github.io/BuscadorEverest/colegioeverest.png" alt="Logo Colegio Everest" class="school-logo">
             </a>
             <div class="header-text">
-                <div class="title-buscador">Buscad<span class="mag-glass"></span>r</div>
+                <div class="title-buscador">Buscador</div>
                 <div class="animated-subtitle">
-                    <span id="typewriter-text"></span><span class="cursor"></span>
+                    <img src="https://colegioeverest.github.io/BuscadorEverest/lupa.png" alt="Lupa" class="lupa-icon">
+                    <div class="typewriter-wrapper">
+                        <span id="typewriter-text"></span><span class="cursor"></span>
+                    </div>
                 </div>
             </div>
         </div>
