@@ -18,6 +18,7 @@
             display: flex; 
             flex-direction: column; 
             align-items: center; 
+            padding-bottom: 40px; 
         }
         
         .header { 
@@ -145,6 +146,59 @@
             display: none !important; 
         }
 
+        /* DASHBOARD */
+        .dashboard-container {
+            width: 90%;
+            max-width: 840px;
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+        }
+
+        .shortcut-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #201E5B;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+        }
+
+        .shortcut-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border-color: #e2e8f0;
+        }
+
+        /* Clase para unificar los tamaños de tus iconos */
+        .card-icon {
+            width: 28px;
+            height: auto;
+            display: block;
+        }
+
+        .ai-card {
+            background: linear-gradient(135deg, #f8faff 0%, #edf2fa 100%);
+            border: 1px solid #dce4f5;
+            color: #1a4b8c;
+        }
+
+        .ai-card:hover {
+            border-color: #b8cbf0;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e2ebf8 100%);
+        }
+
         @media (max-width: 768px) {
             .header-main {
                 flex-direction: column;
@@ -163,6 +217,9 @@
             }
             .school-logo {
                 max-height: 120px;
+            }
+            .dashboard-container {
+                grid-template-columns: repeat(2, 1fr); 
             }
         }
     </style>
@@ -194,8 +251,37 @@
         <div class="gcse-search" data-linktarget="_self"></div>
     </div>
 
+    <div class="dashboard-container">
+        
+        <a style="display: none;" href="https://www.perplexity.ai/" target="_blank" class="shortcut-card ai-card" title="Asistente de Inteligencia Artificial Perplexity">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/perplexity.png" alt="Por confirmar" class="card-icon">
+            <span>Perplexity</span>
+        </a>
+
+        <a href="https://www.colegioeverest.cl" target="_blank" class="shortcut-card">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/everest.png" alt="Colegio Everest" class="card-icon">
+            <span>Web Everest</span>
+        </a>
+
+        <a href="https://lms.lirmi.com/" target="_blank" class="shortcut-card">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/lirmi.png" alt="Lirmi Estudiantes" class="card-icon">
+            <span>Lirmi</span>
+        </a>
+
+        <a href="https://outlook.office.com/" target="_blank" class="shortcut-card">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/outlook.png" alt="Outlook" class="card-icon">
+            <span>Outlook</span>
+        </a>
+
+        <a href="https://onedrive.live.com/" target="_blank" class="shortcut-card">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/onedrive.png" alt="OneDrive" class="card-icon">
+            <span>OneDrive</span>
+        </a>
+
+    </div>
+
     <script>
-        const words = ["Colegio Everest", "Semana del kilo", "Juntos Somos Everest"];
+        const words = ["Colegio Everest", "Semana de la convivencia", "Juntos Somos Everest"];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
