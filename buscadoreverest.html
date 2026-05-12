@@ -173,6 +173,7 @@
             font-weight: 600;
             font-size: 0.9rem;
             border: 1px solid transparent;
+            cursor: pointer;
         }
 
         .shortcut-card:hover {
@@ -181,11 +182,11 @@
             border-color: #e2e8f0;
         }
 
-        /* Clase para unificar los tamaños de tus iconos */
         .card-icon {
             width: 28px;
             height: auto;
             display: block;
+            transition: all 0.2s ease;
         }
 
         .ai-card {
@@ -199,28 +200,110 @@
             background: linear-gradient(135deg, #f0f4ff 0%, #e2ebf8 100%);
         }
 
+        /* VENTANA EMERGENTE (MODAL) DE ADVERTENCIA IA */
+        .modal-overlay {
+            display: none; 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background-color: rgba(0, 0, 0, 0.6); 
+            z-index: 1000; 
+            align-items: center; 
+            justify-content: center;
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: white; 
+            padding: 30px; 
+            border-radius: 16px; 
+            max-width: 450px; 
+            width: 85%; 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #201E5B;
+            margin-bottom: 15px;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+
+        .modal-body ul {
+            padding-left: 20px;
+            color: #334155;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .modal-body li {
+            margin-bottom: 12px;
+        }
+
+        .modal-body strong {
+            color: #0f172a;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .btn-cancel {
+            background-color: #f1f5f9;
+            color: #475569;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-cancel:hover { background-color: #e2e8f0; }
+
+        .btn-proceed {
+            background-color: #201E5B;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-proceed:hover { background-color: #161440; }
+
         @media (max-width: 768px) {
-            .header-main {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-            .header-text {
-                align-items: center;
-            }
-            .title-buscador {
-                font-size: 3.5rem;
-            }
-            .animated-subtitle {
-                font-size: 1.6rem;
-                min-height: 2.2rem;
-            }
-            .school-logo {
-                max-height: 120px;
-            }
-            .dashboard-container {
-                grid-template-columns: repeat(2, 1fr); 
-            }
+            .header-main { flex-direction: column; gap: 20px; text-align: center; }
+            .header-text { align-items: center; }
+            .title-buscador { font-size: 3.5rem; }
+            .animated-subtitle { font-size: 1.6rem; min-height: 2.2rem; }
+            .school-logo { max-height: 120px; }
+            .dashboard-container { grid-template-columns: repeat(2, 1fr); }
+            .modal-content { padding: 20px; }
         }
     </style>
 </head>
@@ -234,6 +317,7 @@
             <div class="header-text">
                 <div class="title-buscador">Buscador</div>
                 <div class="animated-subtitle">
+                    <!-- Esta lupa se mantiene igual ya que es parte del diseño de la palabra -->
                     <img src="https://colegioeverest.github.io/BuscadorEverest/lupa.png" alt="Lupa" class="lupa-icon">
                     <div class="typewriter-wrapper">
                         <span id="typewriter-text"></span><span class="cursor"></span>
@@ -253,35 +337,57 @@
 
     <div class="dashboard-container">
         
-        <a style="display: none;" href="https://www.perplexity.ai/" target="_blank" class="shortcut-card ai-card" title="Asistente de Inteligencia Artificial Perplexity">
-            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/perplexity.png" alt="Por confirmar" class="card-icon">
-            <span>Perplexity</span>
+        <a href="#" onclick="openAiModal(); return false;" class="shortcut-card ai-card" title="Asistente de IA">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/perplexity.png" alt="IA Icono" class="card-icon">
+            <span>IA Perplexity</span>
         </a>
 
         <a href="https://www.colegioeverest.cl" target="_blank" class="shortcut-card">
-            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/everest.png" alt="Colegio Everest" class="card-icon">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/everest.png" alt="Colegio Icono" class="card-icon">
             <span>Sitio web</span>
         </a>
 
-        <a href="https://lms.lirmi.com/" target="_blank" class="shortcut-card">
-            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/lirmi.png" alt="Lirmi Estudiantes" class="card-icon">
+        <a href="https://lirmi.com/cl/" target="_blank" class="shortcut-card">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/lirmi.png" alt="Lirmi Icono" class="card-icon">
             <span>Lirmi Estudiantes</span>
         </a>
 
         <a style="display: none;" href="https://outlook.office.com/" target="_blank" class="shortcut-card">
-            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/outlook.png" alt="Outlook" class="card-icon">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/outlook.png" alt="Outlook Icono" class="card-icon">
             <span>Outlook</span>
         </a>
 
         <a style="display: none;" href="https://onedrive.live.com/" target="_blank" class="shortcut-card">
-            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/onedrive.png" alt="OneDrive" class="card-icon">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/onedrive.png" alt="OneDrive Icono" class="card-icon">
             <span>OneDrive</span>
         </a>
 
     </div>
 
+    <!-- ESTRUCTURA DEL MODAL DE ADVERTENCIA IA -->
+    <div id="aiWarningModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚠️ IMPORTANTE: Sobre uso de IA externa</h3>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li><strong>Verifica la información:</strong> La Inteligencia Artificial puede consultar otros sitios webs que no están en el buscador, puede equivocarse o "alucinar" inventando datos que parecen reales pero que no lo son o que están sesgados. Siempre contrasta con fuentes oficiales.</li>
+                    <li><strong>Protege tu privacidad:</strong> Al ser un sitio externo, no ingreses datos personales, privados, nombres. Jamás ingreses contraseñas personales o del colegio.</li>
+                    <li><strong>Uso responsable:</strong> Utiliza esta herramienta solo para consultas rápidas o resumir conceptos, no para realizar tareas completas.</li>
+                    <li><strong>Links externos:</strong> La IA podrá hacer búsquedas de información e imágenes en diversos sitios, pero sólo podrás acceder a los sitios que los profesores hayan solicitado. ¡Recuerda verificar la información!.</li>
+                </ul>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn-cancel" onclick="closeAiModal()">Cancelar</button>
+                <button class="btn-proceed" onclick="proceedToAi()">Entendido, continuar</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        const words = ["Colegio Everest", "Semana del kilo", "Juntos Somos Everest"];
+        // Animación de escritura
+        const words = ["Colegio Everest", "Juntos Somos Everest"];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -320,6 +426,28 @@
                 link.remove(); 
             });
         }, 1000);
+
+        // Lógica del Modal de IA
+        const modal = document.getElementById('aiWarningModal');
+
+        function openAiModal() {
+            modal.classList.add('show');
+        }
+
+        function closeAiModal() {
+            modal.classList.remove('show');
+        }
+
+        function proceedToAi() {
+            closeAiModal();
+            window.open('https://www.perplexity.ai/', '_blank');
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeAiModal();
+            }
+        }
     </script>
 
 </body>
