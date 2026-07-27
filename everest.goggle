@@ -1,0 +1,59 @@
+! name: Buscador Seguro Colegio Everest
+! description: Goggle personalizado con los sitios web escolares autorizados.
+! public: false
+! author: EVERTICS
+
+$discard
+
+! --- SITIOS AUTORIZADOS ---
+
+/elordenmundial.com/ $boost,active
+/iwm.org.uk/ $boost,active
+/elpais.com/ $boost,active
+/worldatlas.com/ $boost,active
+/fao.org/ $boost,active
+/iadb.org/ $boost,active
+/britannica.com/ $boost,active
+/annefrank.org/ $boost,active
+/ciren.cl/ $boost,active
+/icarito.cl/ $boost,active
+/as.com/ $boost,active
+/rae.es/ $boost,active
+/wordpress.com/ $boost,active
+/gob.cl/ $boost,active
+/colegioeverest.cl/ $boost,active
+/unesco.org/ $boost,active
+/forbes.com/ $boost,active
+/nature.com/ $boost,active
+/nytimes.com/ $boost,active
+/cooperativa.cl/ $boost,active
+/biobiochile.cl/ $boost,active
+/ciperchile.cl/ $boost,active
+/t13.cl/ $boost,active
+/bloomberglinea.com/ $boost,active
+/theglobaleconomy.com/ $boost,active
+/adnradio.cl/ $boost,active
+/chileestuyo.cl/ $boost,active
+/regionesdechile.cl/ $boost,active
+/curriculumnacional.cl/ $boost,active
+/igm.cl/ $boost,active
+/turismovirtual.cl/ $boost,active
+/cnn.com/ $boost,active
+/elmercurio.com/ $boost,active
+/office.com/ $boost,active
+/un.org/ $boost,active
+/cern.ch/ $boost,active
+/science.org/ $boost,active
+/poeticas.es/ $boost,active
+/cervantes.es/ $boost,active
+/bne.es/ $boost,active
+/artsandculture.google.com/ $boost,active
+/nasa.gov/ $boost,active
+/wikipedia.org/ $boost,active
+/nationalgeographic.com/ $boost,active
+/cnnchile.com/ $boost,active
+/24horas.cl/ $boost,active
+/dw.com/ $boost,active
+/bbc.com/ $boost,active
+/edu.cl/ $boost,active
+/curriculumnacional.mineduc.cl/ $boost,active

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Buscador Colegio Everest">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" type="image/png" href="https://colegioeverest.github.io/BuscadorEverest/favicon.png">
+    
+    <title>Buscador Colegio Everest</title>
+    <style>
+        body { 
+            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            background-color: #f4f7f6; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding-bottom: 40px; 
+        }
+        
+        .header { 
+            background-color: #201E5B; 
+            color: white; 
+            width: 100%; 
+            padding: 40px 0 15px 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        }
+
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        .logo-link {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .logo-link:active {
+            transform: scale(0.95);
+        }
+
+        .school-logo {
+            max-height: 180px; 
+            width: auto;
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .title-buscador {
+            font-size: 5.0rem;
+            font-weight: bold;
+            font-style: italic;
+            margin: 0;
+            line-height: 1;
+            letter-spacing: 1px;
+        }
+        
+        .animated-subtitle {
+            font-size: 1.2rem;
+            margin-top: 5px;
+            min-height: 2.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lupa-icon {
+            height: 1em;
+            width: auto;
+        }
+
+        .typewriter-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 4px;
+            background-color: white;
+            height: 1em;
+            margin-left: 5px;
+            animation: blink 0.8s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .header-footer {
+            margin-top: 35px;
+            font-size: 0.85rem;
+            font-style: italic;
+            opacity: 0.5;
+            text-align: center;
+            font-family: 'Trebuchet MS', Arial, sans-serif;
+        }
+
+        .header-footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .header-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* CAJA DE BÚSQUEDA BRAVE */
+        .search-container { 
+            width: 90%; 
+            max-width: 800px; 
+            margin-top: 40px; 
+            background: white; 
+            padding: 15px 20px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            box-sizing: border-box;
+        }
+
+        .brave-search-form {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .brave-search-input {
+            flex: 1;
+            padding: 14px 18px;
+            font-size: 1.1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.2s;
+            font-family: inherit;
+        }
+
+        .brave-search-input:focus {
+            border-color: #201E5B;
+        }
+
+        .brave-search-btn {
+            background-color: #201E5B;
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brave-search-btn:hover {
+            background-color: #161440;
+        }
+
+        .brave-search-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* DASHBOARD */
+        .dashboard-container {
+            width: 90%;
+            max-width: 840px;
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+        }
+
+        .shortcut-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #201E5B;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .shortcut-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border-color: #e2e8f0;
+        }
+
+        .card-icon {
+            width: 28px;
+            height: auto;
+            display: block;
+            transition: all 0.2s ease;
+        }
+
+        @media (max-width: 768px) {
+            .header-main { flex-direction: column; gap: 20px; text-align: center; }
+            .header-text { align-items: center; }
+            .title-buscador { font-size: 3.5rem; }
+            .animated-subtitle { font-size: 1.6rem; min-height: 2.2rem; }
+            .school-logo { max-height: 120px; }
+            .dashboard-container { grid-template-columns: repeat(2, 1fr); }
+            .brave-search-form { flex-direction: column; }
+            .brave-search-btn { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-main">
+            <a href="#" onclick="window.location.reload(true); return false;" class="logo-link">
+                <img src="https://colegioeverest.github.io/BuscadorEverest/colegioeverest.png" alt="Logo Colegio Everest" class="school-logo">
+            </a>
+            <div class="header-text">
+                <div class="title-buscador">Buscador</div>
+                <div class="animated-subtitle">
+                    <img src="https://colegioeverest.github.io/BuscadorEverest/lupa.png" alt="Lupa" class="lupa-icon">
+                    <div class="typewriter-wrapper">
+                        <span id="typewriter-text"></span><span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-footer">
+            Development by EVERTICS &bull; Powered by Brave &bull; <a href="https://www.colegioeverest.cl" target="_blank">colegioeverest.cl</a>
+        </div>
+    </div>
+
+    <!-- CAJA DE BÚSQUEDA INTEGRADA CON BRAVE GOGGLES -->
+    <div class="search-container">
+        <form action="https://search.brave.com/search" method="GET" target="_blank" class="brave-search-form">
+            <input type="text" name="q" class="brave-search-input" placeholder="Buscar información segura..." required autocomplete="off">
+            <!-- URL DE TU ARCHIVO GOGGLE EN GITHUB -->
+            <input type="hidden" name="goggle" value="https://raw.githubusercontent.com/ColegioEverest/BuscadorEverest/main/everest.goggle">
+            <button type="submit" class="brave-search-btn">Buscar</button>
+        </form>
+    </div>
+
+    <div class="dashboard-container">
+        
+        <a href="https://www.colegioeverest.cl" target="_blank" class="shortcut-card">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/everest.png" alt="Colegio Icono" class="card-icon">
+            <span>Sitio web</span>
+        </a>
+
+        <a href="https://lirmi.com/cl/" target="_blank" class="shortcut-card">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/lirmi.png" alt="Lirmi Icono" class="card-icon">
+            <span>Lirmi Estudiantes</span>
+        </a>
+
+        <a style="display: none;" href="https://outlook.office.com/" target="_blank" class="shortcut-card">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/outlook.png" alt="Outlook Icono" class="card-icon">
+            <span>Outlook</span>
+        </a>
+
+        <a style="display: none;" href="https://onedrive.live.com/" target="_blank" class="shortcut-card">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/onedrive.png" alt="OneDrive Icono" class="card-icon">
+            <span>OneDrive</span>
+        </a>
+
+    </div>
+
+    <script>
+        // Animación de escritura
+        const words = ["Colegio Everest", "Juntos Somos Everest"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterElement = document.getElementById("typewriter-text");
+
+        function type() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 2000; 
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500; 
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        type();
+    </script>
+
+</body>
+</html>
