@@ -1,4 +1,4 @@
-! name: Buscador Seguro Colegio Everest
+! name: Filtro para Buscador Colegio Everest
 ! description: Goggle personalizado con los sitios web escolares autorizados.
 ! public: false
 ! author: EVERTICS
@@ -7,7 +7,6 @@ $discard
 
 $boost=10,site=elordenmundial.com
 $boost=10,site=iwm.org.uk
-$boost=10,site=elpais.com
 $boost=10,site=worldatlas.com
 $boost=10,site=fao.org
 $boost=10,site=iadb.org
@@ -15,7 +14,6 @@ $boost=10,site=britannica.com
 $boost=10,site=annefrank.org
 $boost=10,site=ciren.cl
 $boost=10,site=icarito.cl
-$boost=10,site=as.com
 $boost=10,site=rae.es
 $boost=10,site=wordpress.com
 $boost=10,site=gob.cl
