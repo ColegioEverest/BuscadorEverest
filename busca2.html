@@ -8,43 +8,81 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="icon" type="image/png" href="https://colegioeverest.github.io/BuscadorEverest/favicon.png">
     
+    <!-- Fuente Outfit del diseño glassmorphism -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <title>Buscador Colegio Everest</title>
+    
     <style>
-        body { 
-            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-            background-color: #f4f7f6; 
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            padding-bottom: 40px; 
-        }
-        
-        .header { 
-            background-color: #201E5B; 
-            color: white; 
-            width: 100%; 
-            padding: 40px 0 15px 0; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --shadow-premium: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            --card-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.15);
+            --font: 'Outfit', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .header-main {
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font);
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2.5rem 1.5rem;
+            position: relative;
+        }
+
+        /* CAPA DE FONDO CON EL BOCETO DEL COLEGIO */
+        .sketch-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://colegioeverest.github.io/BuscadorEverest/fondo-colegio-estilo-boceto-a-mano_alpha-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.04; 
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* HEADER REORGANIZADO */
+        .header {
+            display: flex;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            width: 90%;
-            max-width: 900px;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            z-index: 1;
+            width: 100%;
         }
 
         .logo-link {
             cursor: pointer;
             transition: transform 0.2s ease;
+            display: block;
         }
         
         .logo-link:active {
@@ -52,215 +90,215 @@
         }
 
         .school-logo {
-            max-height: 180px; 
+            max-height: 120px; 
             width: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
         }
 
-        .header-text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        }
-
-        .title-buscador {
-            font-size: 5.0rem;
-            font-weight: bold;
-            font-style: italic;
-            margin: 0;
-            line-height: 1;
-            letter-spacing: 1px;
-        }
-        
-        .animated-subtitle {
-            font-size: 1.2rem;
-            margin-top: 5px;
-            min-height: 2.8rem;
+        .title-wrapper {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
+        .title-buscador {
+            font-size: 2.6rem; 
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, #fff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            margin: 0;
+        }
+
         .lupa-icon {
-            height: 1em;
+            height: 2.2rem;
             width: auto;
+            /* Filtro para volver la lupa 100% blanca */
+            filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.2)); 
         }
 
-        .typewriter-wrapper {
-            display: flex;
-            align-items: center;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 4px;
-            background-color: white;
-            height: 1em;
-            margin-left: 5px;
-            animation: blink 0.8s step-end infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .header-footer {
-            margin-top: 35px;
-            font-size: 0.85rem;
-            font-style: italic;
-            opacity: 0.5;
-            text-align: center;
-            font-family: 'Trebuchet MS', Arial, sans-serif;
-        }
-
-        .header-footer a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .header-footer a:hover {
-            text-decoration: underline;
-        }
-        
-        /* CAJA DE BÚSQUEDA BRAVE */
+        /* CAJA DE BÚSQUEDA BRAVE (GLASSMORPHISM) */
         .search-container { 
-            width: 90%; 
-            max-width: 800px; 
-            margin-top: 40px; 
-            background: white; 
-            padding: 15px 20px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-            box-sizing: border-box;
+            width: 100%; 
+            max-width: 750px; 
+            margin-bottom: 3.5rem; 
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .brave-search-form {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             width: 100%;
         }
 
         .brave-search-input {
             flex: 1;
-            padding: 14px 18px;
-            font-size: 1.1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
+            padding: 1.2rem 1.8rem;
+            font-size: 1.15rem;
+            font-family: var(--font);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            color: var(--text-main);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             outline: none;
-            transition: border-color 0.2s;
-            font-family: inherit;
+            box-shadow: var(--shadow-premium);
+            transition: var(--transition);
+        }
+
+        /* Color del texto que se escribe solo */
+        .brave-search-input::placeholder {
+            color: var(--text-muted);
+            opacity: 0.8;
+            transition: color 0.2s ease;
+        }
+
+        /* Oculta la animación instantáneamente al hacer clic/tocar la barra */
+        .brave-search-input:focus::placeholder {
+            color: transparent;
         }
 
         .brave-search-input:focus {
-            border-color: #201E5B;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25), var(--shadow-premium);
+            background: rgba(30, 41, 59, 0.85);
         }
 
         .brave-search-btn {
-            background-color: #201E5B;
+            background-color: var(--accent);
             color: white;
             border: none;
-            padding: 0 25px;
-            border-radius: 8px;
-            font-size: 1rem;
+            padding: 0 2.2rem;
+            border-radius: 16px;
+            font-size: 1.05rem;
             font-weight: 600;
+            font-family: var(--font);
             cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .brave-search-btn:hover {
-            background-color: #161440;
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
         }
 
         .brave-search-btn:active {
             transform: scale(0.98);
         }
 
-        /* DASHBOARD */
+        /* DASHBOARD (TARJETAS GLASSMORPHISM) */
         .dashboard-container {
-            width: 90%;
-            max-width: 840px;
-            margin-top: 25px;
+            width: 100%;
+            max-width: 850px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            z-index: 1;
         }
 
         .shortcut-card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px 10px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1.8rem 1.2rem;
             text-align: center;
             text-decoration: none;
-            color: #201E5B;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-            transition: all 0.2s ease;
+            color: var(--text-main);
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: 1px solid transparent;
+            gap: 15px;
+            font-weight: 500;
+            font-size: 1.05rem;
             cursor: pointer;
         }
 
         .shortcut-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            border-color: #e2e8f0;
+            transform: translateY(-6px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(30, 41, 59, 0.85);
+            color: #fff;
         }
 
         .card-icon {
-            width: 28px;
+            width: 36px;
             height: auto;
             display: block;
-            transition: all 0.2s ease;
+            transition: var(--transition);
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+
+        .shortcut-card:hover .card-icon {
+            transform: scale(1.1) translateY(-2px);
+        }
+
+        /* FOOTER */
+        .footer {
+            margin-top: auto;
+            padding-top: 4rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--text-main);
         }
 
         @media (max-width: 768px) {
-            .header-main { flex-direction: column; gap: 20px; text-align: center; }
-            .header-text { align-items: center; }
-            .title-buscador { font-size: 3.5rem; }
-            .animated-subtitle { font-size: 1.6rem; min-height: 2.2rem; }
-            .school-logo { max-height: 120px; }
-            .dashboard-container { grid-template-columns: repeat(2, 1fr); }
+            .header { gap: 1rem; margin-bottom: 2rem; }
+            .title-buscador { font-size: 2.2rem; }
+            .lupa-icon { height: 1.8rem; }
+            .school-logo { max-height: 75px; }
+            .dashboard-container { grid-template-columns: repeat(2, 1fr); gap: 15px; }
             .brave-search-form { flex-direction: column; }
-            .brave-search-btn { padding: 12px; }
+            .brave-search-btn { padding: 1.1rem; border-radius: 14px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- FONDO SKETCH TRANSPARENTE -->
+    <div class="sketch-background"></div>
+
     <div class="header">
-        <div class="header-main">
-            <a href="#" onclick="window.location.reload(true); return false;" class="logo-link">
-                <img src="https://colegioeverest.github.io/BuscadorEverest/colegioeverest.png" alt="Logo Colegio Everest" class="school-logo">
-            </a>
-            <div class="header-text">
-                <div class="title-buscador">Buscador</div>
-                <div class="animated-subtitle">
-                    <img src="https://colegioeverest.github.io/BuscadorEverest/lupa.png" alt="Lupa" class="lupa-icon">
-                    <div class="typewriter-wrapper">
-                        <span id="typewriter-text"></span><span class="cursor"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="header-footer">
-            Development by EVERTICS &bull; Powered by Brave &bull; <a href="https://www.colegioeverest.cl" target="_blank">colegioeverest.cl</a>
+        <a href="#" onclick="window.location.reload(true); return false;" class="logo-link">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/colegioeverest.png" alt="Logo Colegio Everest" class="school-logo">
+        </a>
+        <div class="title-wrapper">
+            <div class="title-buscador">Buscador</div>
+            <img src="https://colegioeverest.github.io/BuscadorEverest/lupa.png" alt="Lupa" class="lupa-icon">
         </div>
     </div>
 
     <div class="search-container">
-        <!-- Quitamos target="_blank" para que abra en la misma pestaña -->
         <form action="https://search.brave.com/search" method="GET" class="brave-search-form">
-            <input type="text" name="q" class="brave-search-input" placeholder="Buscar información segura..." required autocomplete="off">
-            <!-- CORRECCIÓN: El parámetro es goggles_id y apunta a la URL directa de Github Pages -->
+            <input type="text" name="q" class="brave-search-input" id="animated-input" required autocomplete="off">
             <input type="hidden" name="goggles_id" value="https://raw.githubusercontent.com/ColegioEverest/BuscadorEverest/refs/heads/main/everest.goggle">
             <button type="submit" class="brave-search-btn">Buscar</button>
         </form>
@@ -290,34 +328,40 @@
 
     </div>
 
+    <div class="footer">
+        Development by EVERTICS &bull; Powered by Brave &bull; <a href="https://www.colegioeverest.cl" target="_blank">colegioeverest.cl</a>
+    </div>
+
     <script>
-        // Animación de escritura
-        const words = ["Colegio Everest", "Juntos Somos Everest"];
+        // Animación de escritura directamente en el Placeholder del Input
+        const words = ["Colegio Everest...", "Juntos Somos Everest..."];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
-        const typewriterElement = document.getElementById("typewriter-text");
+        const inputElement = document.getElementById("animated-input");
 
         function type() {
             const currentWord = words[wordIndex];
             
             if (isDeleting) {
-                typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
                 charIndex--;
             } else {
-                typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
                 charIndex++;
             }
 
-            let typeSpeed = isDeleting ? 50 : 100;
+            // Actualiza el texto del placeholder agregando un pipe (|) para simular el cursor
+            let text = currentWord.substring(0, charIndex);
+            inputElement.setAttribute('placeholder', text + "|");
+
+            let typeSpeed = isDeleting ? 40 : 80;
 
             if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 2000; 
+                typeSpeed = 1500; // Pausa antes de borrar
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 500; 
+                typeSpeed = 400; // Pausa antes de escribir la siguiente palabra
             }
 
             setTimeout(type, typeSpeed);
