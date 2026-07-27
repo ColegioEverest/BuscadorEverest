@@ -5,53 +5,53 @@
 
 $discard
 
-*elordenmundial.com* $boost=10
-*iwm.org.uk* $boost=10
-*elpais.com* $boost=10
-*worldatlas.com* $boost=10
-*fao.org* $boost=10
-*iadb.org* $boost=10
-*britannica.com* $boost=10
-*annefrank.org* $boost=10
-*ciren.cl* $boost=10
-*icarito.cl* $boost=10
-*as.com* $boost=10
-*rae.es* $boost=10
-*wordpress.com* $boost=10
-*gob.cl* $boost=10
-*colegioeverest.cl* $boost=10
-*unesco.org* $boost=10
-*forbes.com* $boost=10
-*nature.com* $boost=10
-*nytimes.com* $boost=10
-*cooperativa.cl* $boost=10
-*biobiochile.cl* $boost=10
-*ciperchile.cl* $boost=10
-*t13.cl* $boost=10
-*bloomberglinea.com* $boost=10
-*theglobaleconomy.com* $boost=10
-*adnradio.cl* $boost=10
-*chileestuyo.cl* $boost=10
-*regionesdechile.cl* $boost=10
-*curriculumnacional.cl* $boost=10
-*igm.cl* $boost=10
-*turismovirtual.cl* $boost=10
-*cnn.com* $boost=10
-*elmercurio.com* $boost=10
-*office.com* $boost=10
-*un.org* $boost=10
-*cern.ch* $boost=10
-*science.org* $boost=10
-*poeticas.es* $boost=10
-*cervantes.es* $boost=10
-*bne.es* $boost=10
-*artsandculture.google.com* $boost=10
-*nasa.gov* $boost=10
-*wikipedia.org* $boost=10
-*nationalgeographic.com* $boost=10
-*cnnchile.com* $boost=10
-*24horas.cl* $boost=10
-*dw.com* $boost=10
-*bbc.com* $boost=10
-*edu.cl* $boost=10
-*curriculumnacional.mineduc.cl* $boost=10
+$boost=10,site=elordenmundial.com
+$boost=10,site=iwm.org.uk
+$boost=10,site=elpais.com
+$boost=10,site=worldatlas.com
+$boost=10,site=fao.org
+$boost=10,site=iadb.org
+$boost=10,site=britannica.com
+$boost=10,site=annefrank.org
+$boost=10,site=ciren.cl
+$boost=10,site=icarito.cl
+$boost=10,site=as.com
+$boost=10,site=rae.es
+$boost=10,site=wordpress.com
+$boost=10,site=gob.cl
+$boost=10,site=colegioeverest.cl
+$boost=10,site=unesco.org
+$boost=10,site=forbes.com
+$boost=10,site=nature.com
+$boost=10,site=nytimes.com
+$boost=10,site=cooperativa.cl
+$boost=10,site=biobiochile.cl
+$boost=10,site=ciperchile.cl
+$boost=10,site=t13.cl
+$boost=10,site=bloomberglinea.com
+$boost=10,site=theglobaleconomy.com
+$boost=10,site=adnradio.cl
+$boost=10,site=chileestuyo.cl
+$boost=10,site=regionesdechile.cl
+$boost=10,site=curriculumnacional.cl
+$boost=10,site=igm.cl
+$boost=10,site=turismovirtual.cl
+$boost=10,site=cnn.com
+$boost=10,site=elmercurio.com
+$boost=10,site=office.com
+$boost=10,site=un.org
+$boost=10,site=cern.ch
+$boost=10,site=science.org
+$boost=10,site=poeticas.es
+$boost=10,site=cervantes.es
+$boost=10,site=bne.es
+$boost=10,site=artsandculture.google.com
+$boost=10,site=nasa.gov
+$boost=10,site=wikipedia.org
+$boost=10,site=nationalgeographic.com
+$boost=10,site=cnnchile.com
+$boost=10,site=24horas.cl
+$boost=10,site=dw.com
+$boost=10,site=bbc.com
+$boost=10,site=edu.cl
+$boost=10,site=curriculumnacional.mineduc.cl
