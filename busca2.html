@@ -115,11 +115,10 @@
         .lupa-icon {
             height: 2.2rem;
             width: auto;
-            /* Filtro para volver la lupa 100% blanca */
             filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.2)); 
         }
 
-        /* CAJA DE BÚSQUEDA BRAVE (GLASSMORPHISM) */
+        /* CONTENEDOR DE BÚSQUEDA */
         .search-container { 
             width: 100%; 
             max-width: 750px; 
@@ -129,72 +128,96 @@
             flex-direction: column;
         }
 
-        .brave-search-form {
-            display: flex;
-            gap: 12px;
-            width: 100%;
+        /* ========================================================
+           ADAPTACIÓN DE ESTILOS PARA GOOGLE CSE (GLASSMORPHISM)
+           ======================================================== */
+        
+        .gcsc-find-more-on-google, 
+        .gcsc-find-more-on-google-magnifier, 
+        .gcsc-find-more-on-google-branding, 
+        .gcsc-more-maybe-branding-root, 
+        .gsc-more-maybe-branding-root,
+        .gsc-search-button-v2 svg title { 
+            display: none !important; 
         }
 
-        .brave-search-input {
-            flex: 1;
-            padding: 1.2rem 1.8rem;
-            font-size: 1.15rem;
-            font-family: var(--font);
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 18px;
-            color: var(--text-main);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            outline: none;
-            box-shadow: var(--shadow-premium);
-            transition: var(--transition);
+        .gsc-control-cse { 
+            background-color: transparent !important; 
+            border: none !important; 
+            padding: 0 !important;
+            font-family: var(--font) !important;
         }
 
-        /* Color del texto que se escribe solo */
-        .brave-search-input::placeholder {
-            color: var(--text-muted);
-            opacity: 0.8;
-            transition: color 0.2s ease;
+        /* Caja contenedora del input */
+        .gsc-input-box {
+            background: var(--glass-bg) !important;
+            border: 1px solid var(--glass-border) !important;
+            border-radius: 18px !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            box-shadow: var(--shadow-premium) !important;
+            transition: var(--transition) !important;
+            padding: 2px 8px !important;
+            display: flex !important;
+            align-items: center !important;
         }
 
-        /* Oculta la animación instantáneamente al hacer clic/tocar la barra */
-        .brave-search-input:focus::placeholder {
-            color: transparent;
+        /* Efecto Focus en la caja */
+        .gsc-input-box-focus {
+            border-color: var(--accent) !important;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25), var(--shadow-premium) !important;
+            background: rgba(30, 41, 59, 0.85) !important;
         }
 
-        .brave-search-input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25), var(--shadow-premium);
-            background: rgba(30, 41, 59, 0.85);
+        /* El input de texto real de Google */
+        input.gsc-input {
+            background: transparent !important;
+            color: var(--text-main) !important;
+            font-family: var(--font) !important;
+            font-size: 1.15rem !important;
+            padding: 10px !important;
         }
 
-        .brave-search-btn {
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            padding: 0 2.2rem;
-            border-radius: 16px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            font-family: var(--font);
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        input.gsc-input::placeholder {
+            color: var(--text-muted) !important;
+            opacity: 0.8 !important;
+            transition: color 0.2s ease !important;
         }
 
-        .brave-search-btn:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        /* Oculta la animación instantáneamente al hacer clic */
+        input.gsc-input:focus::placeholder {
+            color: transparent !important;
         }
 
-        .brave-search-btn:active {
-            transform: scale(0.98);
+        /* Botón de búsqueda de Google adaptado */
+        .gsc-search-button-v2 {
+            background-color: var(--accent) !important;
+            border: none !important;
+            border-radius: 16px !important;
+            padding: 14px 28px !important;
+            cursor: pointer !important;
+            transition: var(--transition) !important;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4) !important;
+            margin-left: 12px !important;
         }
+
+        .gsc-search-button-v2:hover {
+            background-color: var(--accent-hover) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5) !important;
+        }
+
+        .gsc-search-button-v2:active {
+            transform: scale(0.98) !important;
+        }
+
+        .gsc-search-button-v2 svg {
+            fill: white !important;
+            width: 18px !important;
+            height: 18px !important;
+        }
+
+        /* ======================================================== */
 
         /* DASHBOARD (TARJETAS GLASSMORPHISM) */
         .dashboard-container {
@@ -276,8 +299,10 @@
             .lupa-icon { height: 1.8rem; }
             .school-logo { max-height: 75px; }
             .dashboard-container { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .brave-search-form { flex-direction: column; }
-            .brave-search-btn { padding: 1.1rem; border-radius: 14px; }
+            
+            /* Ajustes móviles para Google CSE */
+            form.gsc-search-box { display: flex; flex-direction: column; gap: 12px; }
+            .gsc-search-button-v2 { margin-left: 0 !important; width: 100%; padding: 12px !important; }
         }
     </style>
 </head>
@@ -297,11 +322,9 @@
     </div>
 
     <div class="search-container">
-        <form action="https://search.brave.com/search" method="GET" class="brave-search-form">
-            <input type="text" name="q" class="brave-search-input" id="animated-input" required autocomplete="off">
-            <input type="hidden" name="goggles_id" value="https://raw.githubusercontent.com/ColegioEverest/BuscadorEverest/refs/heads/main/everest.goggle">
-            <button type="submit" class="brave-search-btn">Buscar</button>
-        </form>
+        <!-- INTEGRACIÓN DE GOOGLE CSE CON TARGET EN NUEVA PESTAÑA -->
+        <script async src="https://cse.google.com/cse.js?cx=85af81c8695ad4f52"></script>
+        <div class="gcse-search" data-linktarget="_blank"></div>
     </div>
 
     <div class="dashboard-container">
@@ -329,18 +352,29 @@
     </div>
 
     <div class="footer">
-        Development by EVERTICS &bull; Powered by Brave &bull; <a href="https://www.colegioeverest.cl" target="_blank">colegioeverest.cl</a>
+        Development by EVERTICS &bull; Powered by Google &bull; <a href="https://www.colegioeverest.cl" target="_blank">colegioeverest.cl</a>
     </div>
 
     <script>
-        // Animación de escritura directamente en el Placeholder del Input
+        // Animación de escritura adaptada para inyectarse en el input de Google CSE una vez que cargue
         const words = ["Colegio Everest...", "Juntos Somos Everest..."];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
-        const inputElement = document.getElementById("animated-input");
+        let googleInput = null;
+
+        // Intervalo para buscar la barra de Google, ya que se carga de forma asíncrona
+        const checkInputInterval = setInterval(function() {
+            googleInput = document.querySelector('input.gsc-input');
+            if (googleInput) {
+                clearInterval(checkInputInterval);
+                type(); // Inicia la animación de escritura
+            }
+        }, 100);
 
         function type() {
+            if (!googleInput) return;
+            
             const currentWord = words[wordIndex];
             
             if (isDeleting) {
@@ -349,9 +383,9 @@
                 charIndex++;
             }
 
-            // Actualiza el texto del placeholder agregando un pipe (|) para simular el cursor
+            // Actualiza el placeholder de Google agregando un pipe (|) para simular el cursor
             let text = currentWord.substring(0, charIndex);
-            inputElement.setAttribute('placeholder', text + "|");
+            googleInput.setAttribute('placeholder', text + "|");
 
             let typeSpeed = isDeleting ? 40 : 80;
 
@@ -366,8 +400,14 @@
 
             setTimeout(type, typeSpeed);
         }
-
-        type();
+        
+        // Limpia hipervínculos rebeldes que puedan desconfigurar el marco (Mantenido de versiones previas)
+        setInterval(function() {
+            let escapeLinks = document.querySelectorAll('a[href*="google.com/search"]');
+            escapeLinks.forEach(function(link) { 
+                link.remove(); 
+            });
+        }, 1000);
     </script>
 
 </body>
