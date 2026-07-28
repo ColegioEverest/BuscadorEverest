@@ -49,7 +49,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2.5rem 1.5rem;
+            /* Se quitó el padding superior para que el header pegue arriba */
+            padding: 0 0 2.5rem 0; 
             position: relative;
         }
 
@@ -60,26 +61,28 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://colegioeverest.github.io/BuscadorEverest/fondo-colegio-estilo-boceto-a-mano_alpha-bg.jpg'); /* Cambia a .png si tu archivo es png */
+            background-image: url('https://colegioeverest.github.io/BuscadorEverest/fondo-colegio-estilo-boceto-a-mano_alpha-bg.jpg'); 
             background-size: cover;
             background-position: center;
-            /* Invertir colores: convierte el fondo negro en blanco y la tiza en lápiz */
             filter: invert(1); 
             opacity: 0.06; 
             z-index: -1;
             pointer-events: none;
         }
 
-        /* HEADER */
+        /* HEADER AZUL COMPLETO */
         .header {
+            background-color: var(--accent);
+            width: 100%;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
             gap: 1.5rem;
-            margin-bottom: 2.5rem;
+            padding: 3rem 1.5rem;
+            margin-bottom: 3.5rem;
             z-index: 1;
-            width: 100%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
 
         .logo-link {
@@ -95,7 +98,7 @@
         .school-logo {
             max-height: 110px; 
             width: auto;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
         }
 
         .title-wrapper {
@@ -105,18 +108,19 @@
         }
 
         .title-buscador {
-            font-size: 2.6rem; 
+            font-size: 2.8rem; 
             font-weight: 700;
-            color: var(--accent); /* Color azul del colegio */
+            color: #ffffff; /* Letras blancas sobre fondo azul */
             letter-spacing: -0.02em;
             line-height: 1;
             margin: 0;
         }
 
         .lupa-icon {
-            height: 2.0rem;
+            height: 2.2rem;
             width: auto;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); 
+            /* Filtro para volver la lupa 100% blanca */
+            filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.2)); 
         }
 
         /* CONTENEDOR DE BÚSQUEDA */
@@ -127,6 +131,7 @@
             z-index: 1;
             display: flex;
             flex-direction: column;
+            padding: 0 1.5rem; /* Padding lateral por si la pantalla es pequeña */
         }
 
         /* ========================================================
@@ -217,8 +222,19 @@
             height: 18px !important;
         }
 
-        /* ESTILIZANDO EL CAJÓN DE RESULTADOS DE GOOGLE */
+        /* ESTILIZANDO EL CAJÓN DE RESULTADOS DE GOOGLE (OCULTO SI ESTÁ VACÍO) */
+        
+        /* Aseguramos que la base sea invisible */
         .gsc-results-wrapper-nooverlay {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin-top: 0 !important;
+        }
+
+        /* Sólo aplica estilos de caja cuando Google inyecta la clase 'visible' tras buscar */
+        .gsc-results-wrapper-nooverlay.gsc-results-wrapper-visible {
             background: var(--glass-bg) !important;
             backdrop-filter: blur(12px) !important;
             -webkit-backdrop-filter: blur(12px) !important;
@@ -268,6 +284,7 @@
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
             z-index: 1;
+            padding: 0 1.5rem;
         }
 
         .shortcut-card {
@@ -335,9 +352,9 @@
         }
 
         @media (max-width: 768px) {
-            .header { gap: 1rem; margin-bottom: 2rem; flex-direction: column; }
+            .header { gap: 1rem; margin-bottom: 2rem; flex-direction: column; padding: 2.5rem 1rem; }
             .title-wrapper { margin-top: -10px; }
-            .title-buscador { font-size: 2.2rem; }
+            .title-buscador { font-size: 2.4rem; }
             .lupa-icon { height: 1.8rem; }
             .school-logo { max-height: 85px; }
             .dashboard-container { grid-template-columns: repeat(2, 1fr); gap: 15px; }
@@ -345,7 +362,7 @@
             /* Ajustes móviles para Google CSE */
             form.gsc-search-box { display: flex; flex-direction: column; gap: 12px; }
             .gsc-search-button-v2 { margin-left: 0 !important; width: 100%; padding: 12px !important; }
-            .gsc-results-wrapper-nooverlay { padding: 10px !important; }
+            .gsc-results-wrapper-nooverlay.gsc-results-wrapper-visible { padding: 10px !important; }
         }
     </style>
 </head>
@@ -360,7 +377,6 @@
         </a>
         <div class="title-wrapper">
             <div class="title-buscador">Buscador</div>
-            <!-- La lupa ya no tiene invert, mantiene su color natural sobre fondo claro -->
             <img src="https://colegioeverest.github.io/BuscadorEverest/lupa.png" alt="Lupa" class="lupa-icon">
         </div>
     </div>
