@@ -15,17 +15,18 @@
     
     <style>
         :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --accent: #6366f1;
-            --accent-hover: #4f46e5;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-            --glass-bg: rgba(30, 41, 59, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.05);
-            --shadow-premium: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            --card-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.15);
+            /* PALETA DE COLORES TEMA CLARO */
+            --bg-primary: #f4f7f6; 
+            --bg-secondary: #ffffff;
+            --accent: #201E5B; /* Azul Colegio Everest */
+            --accent-hover: #161440;
+            --text-main: #1e293b; /* Texto oscuro */
+            --text-muted: #64748b;
+            --border: rgba(32, 30, 91, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.75); /* Vidrio esmerilado claro */
+            --glass-border: rgba(255, 255, 255, 1);
+            --shadow-premium: 0 8px 32px 0 rgba(32, 30, 91, 0.08);
+            --card-shadow: 0 4px 20px 0 rgba(32, 30, 91, 0.05);
             --font: 'Outfit', sans-serif;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -39,8 +40,8 @@
         body {
             background-color: var(--bg-primary);
             background-image: 
-                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
+                radial-gradient(at 0% 0%, rgba(32, 30, 91, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(32, 30, 91, 0.05) 0px, transparent 50%);
             background-attachment: fixed;
             color: var(--text-main);
             font-family: var(--font);
@@ -59,15 +60,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://colegioeverest.github.io/BuscadorEverest/fondo-colegio-estilo-boceto-a-mano_alpha-bg.png');
+            background-image: url('https://colegioeverest.github.io/BuscadorEverest/fondo-colegio-estilo-boceto-a-mano_alpha-bg.jpg'); /* Cambia a .png si tu archivo es png */
             background-size: cover;
             background-position: center;
-            opacity: 0.04; 
+            /* Invertir colores: convierte el fondo negro en blanco y la tiza en lápiz */
+            filter: invert(1); 
+            opacity: 0.06; 
             z-index: -1;
             pointer-events: none;
         }
 
-        /* HEADER REORGANIZADO */
+        /* HEADER */
         .header {
             display: flex;
             flex-direction: row;
@@ -90,9 +93,9 @@
         }
 
         .school-logo {
-            max-height: 120px; 
+            max-height: 110px; 
             width: auto;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
         }
 
         .title-wrapper {
@@ -104,18 +107,16 @@
         .title-buscador {
             font-size: 2.6rem; 
             font-weight: 700;
-            background: linear-gradient(135deg, #fff 0%, #fff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent); /* Color azul del colegio */
             letter-spacing: -0.02em;
             line-height: 1;
             margin: 0;
         }
 
         .lupa-icon {
-            height: 2.2rem;
+            height: 2.0rem;
             width: auto;
-            filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.2)); 
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); 
         }
 
         /* CONTENEDOR DE BÚSQUEDA */
@@ -129,7 +130,7 @@
         }
 
         /* ========================================================
-           ADAPTACIÓN DE ESTILOS PARA GOOGLE CSE (GLASSMORPHISM)
+           ADAPTACIÓN DE ESTILOS PARA GOOGLE CSE (TEMA CLARO)
            ======================================================== */
         
         .gcsc-find-more-on-google, 
@@ -165,8 +166,8 @@
         /* Efecto Focus en la caja */
         .gsc-input-box-focus {
             border-color: var(--accent) !important;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25), var(--shadow-premium) !important;
-            background: rgba(30, 41, 59, 0.85) !important;
+            box-shadow: 0 0 0 3px rgba(32, 30, 91, 0.15), var(--shadow-premium) !important;
+            background: #ffffff !important;
         }
 
         /* El input de texto real de Google */
@@ -184,7 +185,6 @@
             transition: color 0.2s ease !important;
         }
 
-        /* Oculta la animación instantáneamente al hacer clic */
         input.gsc-input:focus::placeholder {
             color: transparent !important;
         }
@@ -197,14 +197,14 @@
             padding: 14px 28px !important;
             cursor: pointer !important;
             transition: var(--transition) !important;
-            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4) !important;
+            box-shadow: 0 4px 14px rgba(32, 30, 91, 0.2) !important;
             margin-left: 12px !important;
         }
 
         .gsc-search-button-v2:hover {
             background-color: var(--accent-hover) !important;
             transform: translateY(-2px) !important;
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5) !important;
+            box-shadow: 0 6px 20px rgba(32, 30, 91, 0.3) !important;
         }
 
         .gsc-search-button-v2:active {
@@ -217,9 +217,50 @@
             height: 18px !important;
         }
 
+        /* ESTILIZANDO EL CAJÓN DE RESULTADOS DE GOOGLE */
+        .gsc-results-wrapper-nooverlay {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border: 1px solid var(--glass-border) !important;
+            border-radius: 18px !important;
+            padding: 20px !important;
+            box-shadow: var(--shadow-premium) !important;
+            margin-top: 25px !important;
+        }
+
+        /* Tarjetas individuales de cada resultado */
+        .gsc-webResult.gsc-result {
+            background: #ffffff !important;
+            border-radius: 14px !important;
+            padding: 18px !important;
+            margin-bottom: 15px !important;
+            border: 1px solid rgba(0,0,0,0.06) !important;
+            box-shadow: var(--card-shadow) !important;
+        }
+
+        .gsc-webResult.gsc-result:hover {
+            border-color: rgba(32, 30, 91, 0.15) !important;
+        }
+
+        .gsc-thumbnail-inside, .gsc-url-top {
+            padding-bottom: 5px !important;
+        }
+
+        .gs-title, .gs-title * {
+            color: var(--accent) !important;
+            text-decoration: none !important;
+            font-family: var(--font) !important;
+            font-weight: 600 !important;
+        }
+
+        .gs-title:hover, .gs-title *:hover {
+            text-decoration: underline !important;
+        }
+
         /* ======================================================== */
 
-        /* DASHBOARD (TARJETAS GLASSMORPHISM) */
+        /* DASHBOARD (TARJETAS GLASSMORPHISM CLARO) */
         .dashboard-container {
             width: 100%;
             max-width: 850px;
@@ -246,17 +287,17 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 1.05rem;
             cursor: pointer;
         }
 
         .shortcut-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(99, 102, 241, 0.4);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-            background: rgba(30, 41, 59, 0.85);
-            color: #fff;
+            border-color: var(--accent);
+            box-shadow: 0 12px 30px rgba(32, 30, 91, 0.15);
+            background: #ffffff;
+            color: var(--accent);
         }
 
         .card-icon {
@@ -264,7 +305,6 @@
             height: auto;
             display: block;
             transition: var(--transition);
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
 
         .shortcut-card:hover .card-icon {
@@ -277,38 +317,41 @@
             padding-top: 4rem;
             color: var(--text-muted);
             font-size: 0.9rem;
-            font-weight: 300;
+            font-weight: 400;
             text-align: center;
             z-index: 1;
         }
 
         .footer a {
-            color: var(--text-muted);
+            color: var(--accent);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: color 0.2s;
         }
 
         .footer a:hover {
-            color: var(--text-main);
+            color: var(--accent-hover);
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
-            .header { gap: 1rem; margin-bottom: 2rem; }
+            .header { gap: 1rem; margin-bottom: 2rem; flex-direction: column; }
+            .title-wrapper { margin-top: -10px; }
             .title-buscador { font-size: 2.2rem; }
             .lupa-icon { height: 1.8rem; }
-            .school-logo { max-height: 75px; }
+            .school-logo { max-height: 85px; }
             .dashboard-container { grid-template-columns: repeat(2, 1fr); gap: 15px; }
             
             /* Ajustes móviles para Google CSE */
             form.gsc-search-box { display: flex; flex-direction: column; gap: 12px; }
             .gsc-search-button-v2 { margin-left: 0 !important; width: 100%; padding: 12px !important; }
+            .gsc-results-wrapper-nooverlay { padding: 10px !important; }
         }
     </style>
 </head>
 <body>
 
-    <!-- FONDO SKETCH TRANSPARENTE -->
+    <!-- FONDO SKETCH TRANSPARENTE CON COLORES INVERTIDOS -->
     <div class="sketch-background"></div>
 
     <div class="header">
@@ -317,6 +360,7 @@
         </a>
         <div class="title-wrapper">
             <div class="title-buscador">Buscador</div>
+            <!-- La lupa ya no tiene invert, mantiene su color natural sobre fondo claro -->
             <img src="https://colegioeverest.github.io/BuscadorEverest/lupa.png" alt="Lupa" class="lupa-icon">
         </div>
     </div>
@@ -401,7 +445,7 @@
             setTimeout(type, typeSpeed);
         }
         
-        // Limpia hipervínculos rebeldes que puedan desconfigurar el marco (Mantenido de versiones previas)
+        // Limpia hipervínculos rebeldes de Google que puedan desconfigurar el marco
         setInterval(function() {
             let escapeLinks = document.querySelectorAll('a[href*="google.com/search"]');
             escapeLinks.forEach(function(link) { 
