@@ -23,7 +23,7 @@
             --text-main: #1e293b; /* Texto oscuro */
             --text-muted: #64748b;
             --border: rgba(32, 30, 91, 0.1);
-            --glass-bg: rgba(255, 255, 255, 0.75); /* Vidrio esmerilado claro */
+            --glass-bg: rgba(255, 255, 255, 0.75); 
             --glass-border: rgba(255, 255, 255, 1);
             --shadow-premium: 0 8px 32px 0 rgba(32, 30, 91, 0.08);
             --card-shadow: 0 4px 20px 0 rgba(32, 30, 91, 0.05);
@@ -49,7 +49,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Se quitó el padding superior para que el header pegue arriba */
             padding: 0 0 2.5rem 0; 
             position: relative;
         }
@@ -110,7 +109,7 @@
         .title-buscador {
             font-size: 2.8rem; 
             font-weight: 700;
-            color: #ffffff; /* Letras blancas sobre fondo azul */
+            color: #ffffff; 
             letter-spacing: -0.02em;
             line-height: 1;
             margin: 0;
@@ -119,7 +118,6 @@
         .lupa-icon {
             height: 2.2rem;
             width: auto;
-            /* Filtro para volver la lupa 100% blanca */
             filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.2)); 
         }
 
@@ -131,11 +129,11 @@
             z-index: 1;
             display: flex;
             flex-direction: column;
-            padding: 0 1.5rem; /* Padding lateral por si la pantalla es pequeña */
+            padding: 0 1.5rem; 
         }
 
         /* ========================================================
-           ADAPTACIÓN DE ESTILOS PARA GOOGLE CSE (TEMA CLARO)
+           ADAPTACIÓN DE ESTILOS PARA GOOGLE CSE
            ======================================================== */
         
         .gcsc-find-more-on-google, 
@@ -154,7 +152,6 @@
             font-family: var(--font) !important;
         }
 
-        /* Caja contenedora del input */
         .gsc-input-box {
             background: var(--glass-bg) !important;
             border: 1px solid var(--glass-border) !important;
@@ -168,14 +165,12 @@
             align-items: center !important;
         }
 
-        /* Efecto Focus en la caja */
         .gsc-input-box-focus {
             border-color: var(--accent) !important;
             box-shadow: 0 0 0 3px rgba(32, 30, 91, 0.15), var(--shadow-premium) !important;
             background: #ffffff !important;
         }
 
-        /* El input de texto real de Google */
         input.gsc-input {
             background: transparent !important;
             color: var(--text-main) !important;
@@ -194,7 +189,6 @@
             color: transparent !important;
         }
 
-        /* Botón de búsqueda de Google adaptado */
         .gsc-search-button-v2 {
             background-color: var(--accent) !important;
             border: none !important;
@@ -222,9 +216,7 @@
             height: 18px !important;
         }
 
-        /* ESTILIZANDO EL CAJÓN DE RESULTADOS DE GOOGLE (OCULTO SI ESTÁ VACÍO) */
-        
-        /* Aseguramos que la base sea invisible */
+        /* CAJÓN DE RESULTADOS */
         .gsc-results-wrapper-nooverlay {
             background: transparent !important;
             border: none !important;
@@ -233,7 +225,6 @@
             margin-top: 0 !important;
         }
 
-        /* Sólo aplica estilos de caja cuando Google inyecta la clase 'visible' tras buscar */
         .gsc-results-wrapper-nooverlay.gsc-results-wrapper-visible {
             background: var(--glass-bg) !important;
             backdrop-filter: blur(12px) !important;
@@ -245,7 +236,6 @@
             margin-top: 25px !important;
         }
 
-        /* Tarjetas individuales de cada resultado */
         .gsc-webResult.gsc-result {
             background: #ffffff !important;
             border-radius: 14px !important;
@@ -276,12 +266,12 @@
 
         /* ======================================================== */
 
-        /* DASHBOARD (TARJETAS GLASSMORPHISM CLARO) */
+        /* DASHBOARD Y TARJETAS */
         .dashboard-container {
             width: 100%;
             max-width: 850px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             z-index: 1;
             padding: 0 1.5rem;
@@ -309,7 +299,7 @@
             cursor: pointer;
         }
 
-        .shortcut-card:hover {
+        .shortcut-card:not(.ai-card):hover {
             transform: translateY(-6px);
             border-color: var(--accent);
             box-shadow: 0 12px 30px rgba(32, 30, 91, 0.15);
@@ -324,9 +314,155 @@
             transition: var(--transition);
         }
 
-        .shortcut-card:hover .card-icon {
+        .shortcut-card:not(.ai-card):hover .card-icon {
             transform: scale(1.1) translateY(-2px);
         }
+
+        /* COMPONENTES DE LA TARJETA IA */
+        .ai-card {
+            padding: 1.5rem 1.2rem;
+            justify-content: space-between;
+        }
+
+        .glass-select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            font-family: var(--font);
+            font-weight: 500;
+            font-size: 0.95rem;
+            outline: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .glass-select:focus {
+            border-color: var(--accent);
+        }
+
+        .ai-go-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--bg-primary);
+            color: var(--accent);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-weight: 600;
+            font-family: var(--font);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .ai-go-btn:hover {
+            background-color: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* VENTANA EMERGENTE (MODAL) IA */
+        .modal-overlay {
+            display: none; 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background-color: rgba(32, 30, 91, 0.4); 
+            z-index: 1000; 
+            align-items: center; 
+            justify-content: center;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: #ffffff; 
+            padding: 30px; 
+            border-radius: 18px; 
+            max-width: 480px; 
+            width: 90%; 
+            box-shadow: 0 15px 30px rgba(32, 30, 91, 0.2);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            font-family: var(--font);
+            color: var(--text-main);
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .modal-body ul {
+            padding-left: 20px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .modal-body li {
+            margin-bottom: 12px;
+        }
+
+        .modal-body strong {
+            color: var(--text-main);
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .btn-cancel {
+            background-color: #f1f5f9;
+            color: #475569;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: var(--font);
+        }
+
+        .btn-cancel:hover { background-color: #e2e8f0; }
+
+        .btn-proceed {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: var(--font);
+        }
+
+        .btn-proceed:hover { background-color: var(--accent-hover); }
 
         /* FOOTER */
         .footer {
@@ -357,18 +493,16 @@
             .title-buscador { font-size: 2.4rem; }
             .lupa-icon { height: 1.8rem; }
             .school-logo { max-height: 85px; }
-            .dashboard-container { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            
-            /* Ajustes móviles para Google CSE */
+            .dashboard-container { grid-template-columns: repeat(1, 1fr); gap: 15px; }
             form.gsc-search-box { display: flex; flex-direction: column; gap: 12px; }
             .gsc-search-button-v2 { margin-left: 0 !important; width: 100%; padding: 12px !important; }
             .gsc-results-wrapper-nooverlay.gsc-results-wrapper-visible { padding: 10px !important; }
+            .modal-content { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- FONDO SKETCH TRANSPARENTE CON COLORES INVERTIDOS -->
     <div class="sketch-background"></div>
 
     <div class="header">
@@ -382,53 +516,105 @@
     </div>
 
     <div class="search-container">
-        <!-- INTEGRACIÓN DE GOOGLE CSE CON TARGET EN NUEVA PESTAÑA -->
         <script async src="https://cse.google.com/cse.js?cx=85af81c8695ad4f52"></script>
         <div class="gcse-search" data-linktarget="_blank"></div>
     </div>
 
     <div class="dashboard-container">
         
+        <!-- Tarjeta Selector de IAs -->
+        <div class="shortcut-card ai-card">
+            <!-- Ícono genérico para IAs -->
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent); width: 34px; height: 34px;">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            <span style="margin-bottom: -5px;">Inteligencia Artificial</span>
+            
+            <select id="aiChoice" class="glass-select">
+                <option value="https://www.perplexity.ai/academic/">Perplexity</option>
+                <option value="https://chatgpt.com/">ChatGPT</option>
+                <option value="https://claude.ai/">Claude</option>
+                <option value="https://gemini.google.com/">Google Gemini</option>
+                <option value="https://copilot.microsoft.com/">Microsoft Copilot</option>
+            </select>
+            
+            <button onclick="openAiModal()" class="ai-go-btn">Consultar</button>
+        </div>
+
         <a href="https://www.colegioeverest.cl" target="_blank" class="shortcut-card">
             <img src="https://colegioeverest.github.io/BuscadorEverest/cards/everest.png" alt="Colegio Icono" class="card-icon">
             <span>Sitio web</span>
         </a>
 
-        <a href="https://lms.lirmi.com/" target="_blank" class="shortcut-card">
+        <a href="https://lirmi.com/cl/" target="_blank" class="shortcut-card">
             <img src="https://colegioeverest.github.io/BuscadorEverest/cards/lirmi.png" alt="Lirmi Icono" class="card-icon">
             <span>Lirmi Estudiantes</span>
         </a>
 
-        <a style="display: none;" href="https://outlook.office.com/" target="_blank" class="shortcut-card">
-            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/outlook.png" alt="Outlook Icono" class="card-icon">
-            <span>Outlook</span>
-        </a>
+    </div>
 
-        <a style="display: none;" href="https://onedrive.live.com/" target="_blank" class="shortcut-card">
-            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/onedrive.png" alt="OneDrive Icono" class="card-icon">
-            <span>OneDrive</span>
-        </a>
-
+    <!-- ESTRUCTURA DEL MODAL DE ADVERTENCIA IA -->
+    <div id="aiWarningModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚠️ IMPORTANTE: Sobre el uso de IA externa</h3>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li><strong>Verifica la información:</strong> La Inteligencia Artificial puede consultar otros sitios webs que no están en el buscador, puede equivocarse o "alucinar" inventando datos que parecen reales pero que no lo son o que están sesgados. Siempre contrasta con fuentes oficiales.</li>
+                    <li><strong>Protege tu privacidad:</strong> Al ser un sitio externo, no ingreses datos personales, privados ni nombres. Jamás ingreses contraseñas personales o del colegio.</li>
+                    <li><strong>Uso responsable:</strong> Utiliza esta herramienta solo para consultas rápidas o resumir conceptos, no para realizar tareas completas.</li>
+                    <li><strong>Autorización requerida:</strong> Para que el sitio de la IA funcione, el profesor debe solicitar su liberación con anticipación mediante la plataforma iPad Flow.</li>
+                </ul>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn-cancel" onclick="closeAiModal()">Cancelar</button>
+                <button class="btn-proceed" onclick="proceedToAi()">Entendido, continuar</button>
+            </div>
+        </div>
     </div>
 
     <div class="footer">
-        Development by EVERTICS &bull; Powered by Google &bull; <a href="https://www.colegioeverest.cl" target="_blank">colegioeverest.cl</a>
+        Development by EVERTICS &bull; Powered by Google &bull; <a href="https://www.colegioeverest.cl" target="_blank">www.colegioeverest.cl</a>
     </div>
 
     <script>
-        // Animación de escritura adaptada para inyectarse en el input de Google CSE una vez que cargue
+        // Lógica del Modal y Selección de IA
+        const modal = document.getElementById('aiWarningModal');
+
+        function openAiModal() {
+            modal.classList.add('show');
+        }
+
+        function closeAiModal() {
+            modal.classList.remove('show');
+        }
+
+        function proceedToAi() {
+            closeAiModal();
+            const selectedAiUrl = document.getElementById('aiChoice').value;
+            window.open(selectedAiUrl, '_blank');
+        }
+
+        // Cierra el modal si se hace clic fuera del contenido
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeAiModal();
+            }
+        }
+
+        // Animación de escritura en Google CSE
         const words = ["Colegio Everest...", "Juntos Somos Everest..."];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
         let googleInput = null;
 
-        // Intervalo para buscar la barra de Google, ya que se carga de forma asíncrona
         const checkInputInterval = setInterval(function() {
             googleInput = document.querySelector('input.gsc-input');
             if (googleInput) {
                 clearInterval(checkInputInterval);
-                type(); // Inicia la animación de escritura
+                type();
             }
         }, 100);
 
@@ -443,25 +629,23 @@
                 charIndex++;
             }
 
-            // Actualiza el placeholder de Google agregando un pipe (|) para simular el cursor
             let text = currentWord.substring(0, charIndex);
             googleInput.setAttribute('placeholder', text + "|");
 
             let typeSpeed = isDeleting ? 40 : 80;
 
             if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 1500; // Pausa antes de borrar
+                typeSpeed = 1500; 
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 400; // Pausa antes de escribir la siguiente palabra
+                typeSpeed = 400; 
             }
 
             setTimeout(type, typeSpeed);
         }
         
-        // Limpia hipervínculos rebeldes de Google que puedan desconfigurar el marco
         setInterval(function() {
             let escapeLinks = document.querySelectorAll('a[href*="google.com/search"]');
             escapeLinks.forEach(function(link) { 
