@@ -8,43 +8,86 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="icon" type="image/png" href="https://colegioeverest.github.io/BuscadorEverest/favicon.png">
     
-    <title>Buscador Colegio Everest</title>
+    <!-- Fuente Outfit del diseño glassmorphism -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>EverticsSearch • Colegio Everest</title>
+    
     <style>
-        body { 
-            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-            background-color: #f4f7f6; 
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            padding-bottom: 40px; 
-        }
-        
-        .header { 
-            background-color: #201E5B; 
-            color: white; 
-            width: 100%; 
-            padding: 40px 0 15px 0; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        :root {
+            /* PALETA DE COLORES TEMA CLARO */
+            --bg-primary: #f4f7f6; 
+            --bg-secondary: #ffffff;
+            --accent: #201E5B; /* Azul Colegio Everest */
+            --accent-hover: #161440;
+            --text-main: #1e293b; /* Texto oscuro */
+            --text-muted: #64748b;
+            --border: rgba(32, 30, 91, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.75); 
+            --glass-border: rgba(255, 255, 255, 1);
+            --shadow-premium: 0 8px 32px 0 rgba(32, 30, 91, 0.08);
+            --card-shadow: 0 4px 20px 0 rgba(32, 30, 91, 0.05);
+            --font: 'Outfit', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .header-main {
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(32, 30, 91, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(32, 30, 91, 0.05) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font);
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 0 2.5rem 0; 
+            position: relative;
+        }
+
+        /* CAPA DE FONDO CON EL BOCETO DEL COLEGIO */
+        .sketch-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://colegioeverest.github.io/BuscadorEverest/fondo-colegio-estilo-boceto-a-mano_alpha-bg.png'); 
+            background-size: cover;
+            background-position: center;
+            filter: invert(1); 
+            opacity: 0.06; 
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* HEADER AZUL COMPLETO */
+        .header {
+            background-color: var(--accent);
+            width: 100%;
+            display: flex;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            width: 90%;
-            max-width: 900px;
+            gap: 1.5rem;
+            padding: 3rem 1.5rem;
+            margin-bottom: 3.5rem;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
 
         .logo-link {
             cursor: pointer;
             transition: transform 0.2s ease;
+            display: block;
         }
         
         .logo-link:active {
@@ -52,165 +95,292 @@
         }
 
         .school-logo {
-            max-height: 180px; 
+            max-height: 110px; 
             width: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
         }
 
-        .header-text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        }
-
-        .title-buscador {
-            font-size: 5.0rem;
-            font-weight: bold;
-            font-style: italic;
-            margin: 0;
-            line-height: 1;
-            letter-spacing: 1px;
-        }
-        
-        .animated-subtitle {
-            font-size: 1.2rem;
-            margin-top: 5px;
-            min-height: 2.8rem;
+        .title-wrapper {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
+        .title-buscador {
+            font-size: 2.8rem; 
+            font-weight: 700;
+            color: #ffffff; 
+            letter-spacing: -0.02em;
+            line-height: 1;
+            margin: 0;
+        }
+
         .lupa-icon {
-            height: 1em;
+            height: 2.2rem;
             width: auto;
+            filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.2)); 
         }
 
-        .typewriter-wrapper {
-            display: flex;
-            align-items: center;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 4px;
-            background-color: white;
-            height: 1em;
-            margin-left: 5px;
-            animation: blink 0.8s step-end infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .header-footer {
-            margin-top: 35px;
-            font-size: 0.85rem;
-            font-style: italic;
-            opacity: 0.5;
-            text-align: center;
-            font-family: 'Trebuchet MS', Arial, sans-serif;
-        }
-
-        .header-footer a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .header-footer a:hover {
-            text-decoration: underline;
-        }
-        
+        /* CONTENEDOR DE BÚSQUEDA */
         .search-container { 
-            width: 90%; 
-            max-width: 800px; 
-            margin-top: 40px; 
-            background: white; 
-            padding: 20px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            width: 100%; 
+            max-width: 750px; 
+            margin-bottom: 3.5rem; 
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 0 1.5rem; 
         }
-        
-        .gsc-control-cse { 
-            background-color: transparent !important; 
-            border: none !important; 
-        }
+
+        /* ========================================================
+           ADAPTACIÓN DE ESTILOS PARA GOOGLE CSE
+           ======================================================== */
         
         .gcsc-find-more-on-google, 
         .gcsc-find-more-on-google-magnifier, 
         .gcsc-find-more-on-google-branding, 
         .gcsc-more-maybe-branding-root, 
-        .gsc-more-maybe-branding-root { 
+        .gsc-more-maybe-branding-root,
+        .gsc-search-button-v2 svg title { 
             display: none !important; 
         }
 
-        /* DASHBOARD */
+        .gsc-control-cse { 
+            background-color: transparent !important; 
+            border: none !important; 
+            padding: 0 !important;
+            font-family: var(--font) !important;
+        }
+
+        .gsc-input-box {
+            background: var(--glass-bg) !important;
+            border: 1px solid var(--glass-border) !important;
+            border-radius: 18px !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            box-shadow: var(--shadow-premium) !important;
+            transition: var(--transition) !important;
+            padding: 2px 8px !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+
+        .gsc-input-box-focus {
+            border-color: var(--accent) !important;
+            box-shadow: 0 0 0 3px rgba(32, 30, 91, 0.15), var(--shadow-premium) !important;
+            background: #ffffff !important;
+        }
+
+        input.gsc-input {
+            background: transparent !important;
+            color: var(--text-main) !important;
+            font-family: var(--font) !important;
+            font-size: 1.15rem !important;
+            padding: 10px !important;
+        }
+
+        input.gsc-input::placeholder {
+            color: var(--text-muted) !important;
+            opacity: 0.8 !important;
+            transition: color 0.2s ease !important;
+        }
+
+        input.gsc-input:focus::placeholder {
+            color: transparent !important;
+        }
+
+        .gsc-search-button-v2 {
+            background-color: var(--accent) !important;
+            border: none !important;
+            border-radius: 16px !important;
+            padding: 14px 28px !important;
+            cursor: pointer !important;
+            transition: var(--transition) !important;
+            box-shadow: 0 4px 14px rgba(32, 30, 91, 0.2) !important;
+            margin-left: 12px !important;
+        }
+
+        .gsc-search-button-v2:hover {
+            background-color: var(--accent-hover) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 20px rgba(32, 30, 91, 0.3) !important;
+        }
+
+        .gsc-search-button-v2:active {
+            transform: scale(0.98) !important;
+        }
+
+        .gsc-search-button-v2 svg {
+            fill: white !important;
+            width: 18px !important;
+            height: 18px !important;
+        }
+
+        /* CAJÓN DE RESULTADOS */
+        .gsc-results-wrapper-nooverlay {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin-top: 0 !important;
+        }
+
+        .gsc-results-wrapper-nooverlay.gsc-results-wrapper-visible {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border: 1px solid var(--glass-border) !important;
+            border-radius: 18px !important;
+            padding: 20px !important;
+            box-shadow: var(--shadow-premium) !important;
+            margin-top: 25px !important;
+        }
+
+        .gsc-webResult.gsc-result {
+            background: #ffffff !important;
+            border-radius: 14px !important;
+            padding: 18px !important;
+            margin-bottom: 15px !important;
+            border: 1px solid rgba(0,0,0,0.06) !important;
+            box-shadow: var(--card-shadow) !important;
+        }
+
+        .gsc-webResult.gsc-result:hover {
+            border-color: rgba(32, 30, 91, 0.15) !important;
+        }
+
+        .gsc-thumbnail-inside, .gsc-url-top {
+            padding-bottom: 5px !important;
+        }
+
+        .gs-title, .gs-title * {
+            color: var(--accent) !important;
+            text-decoration: none !important;
+            font-family: var(--font) !important;
+            font-weight: 600 !important;
+        }
+
+        .gs-title:hover, .gs-title *:hover {
+            text-decoration: underline !important;
+        }
+
+        /* ======================================================== */
+
+        /* DASHBOARD Y TARJETAS */
         .dashboard-container {
-            width: 90%;
-            max-width: 840px;
-            margin-top: 25px;
+            width: 100%;
+            max-width: 850px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            z-index: 1;
+            padding: 0 1.5rem;
         }
 
         .shortcut-card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px 10px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1.8rem 1.2rem;
             text-align: center;
             text-decoration: none;
-            color: #201E5B;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-            transition: all 0.2s ease;
+            color: var(--text-main);
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
             font-weight: 600;
-            font-size: 0.9rem;
-            border: 1px solid transparent;
+            font-size: 1.05rem;
             cursor: pointer;
         }
 
-        .shortcut-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            border-color: #e2e8f0;
+        .shortcut-card:not(.ai-card):hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 30px rgba(32, 30, 91, 0.15);
+            background: #ffffff;
+            color: var(--accent);
         }
 
         .card-icon {
-            width: 28px;
+            width: 36px;
             height: auto;
             display: block;
-            transition: all 0.2s ease;
+            transition: var(--transition);
         }
 
+        .shortcut-card:not(.ai-card):hover .card-icon {
+            transform: scale(1.1) translateY(-2px);
+        }
+
+        /* COMPONENTES DE LA TARJETA IA */
         .ai-card {
-            background: linear-gradient(135deg, #f8faff 0%, #edf2fa 100%);
-            border: 1px solid #dce4f5;
-            color: #1a4b8c;
+            padding: 1.5rem 1.2rem;
+            justify-content: space-between;
+        }
+        
+        .ai-title-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            text-align: center;
         }
 
-        .ai-card:hover {
-            border-color: #b8cbf0;
-            background: linear-gradient(135deg, #f0f4ff 0%, #e2ebf8 100%);
+        .glass-select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            font-family: var(--font);
+            font-weight: 500;
+            font-size: 0.95rem;
+            outline: none;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
-        /* VENTANA EMERGENTE (MODAL) DE ADVERTENCIA IA */
+        .glass-select:focus {
+            border-color: var(--accent);
+        }
+
+        .ai-go-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--bg-primary);
+            color: var(--accent);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-weight: 600;
+            font-family: var(--font);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .ai-go-btn:hover {
+            background-color: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* VENTANA EMERGENTE (MODAL) IA */
         .modal-overlay {
             display: none; 
             position: fixed; 
             top: 0; left: 0; 
             width: 100%; height: 100%; 
-            background-color: rgba(0, 0, 0, 0.6); 
+            background-color: rgba(32, 30, 91, 0.4); 
             z-index: 1000; 
             align-items: center; 
             justify-content: center;
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -221,14 +391,18 @@
         }
 
         .modal-content {
-            background-color: white; 
+            background-color: #ffffff; 
             padding: 30px; 
-            border-radius: 16px; 
-            max-width: 450px; 
-            width: 85%; 
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border-radius: 18px; 
+            max-width: 480px; 
+            width: 90%; 
+            box-shadow: 0 15px 30px rgba(32, 30, 91, 0.2);
             transform: translateY(20px);
             transition: transform 0.3s ease;
+            font-family: var(--font);
+            color: var(--text-main);
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .modal-overlay.show .modal-content {
@@ -239,31 +413,75 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #201E5B;
-            margin-bottom: 15px;
+            color: var(--accent);
+            margin-bottom: 20px;
         }
 
         .modal-header h3 {
             margin: 0;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
+            font-weight: 700;
         }
 
-        .modal-body ul {
-            padding-left: 20px;
-            color: #334155;
-            line-height: 1.6;
-            font-size: 0.95rem;
+        /* DISEÑO DE ACORDEÓN (LIST VIEW) PARA EL MODAL */
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             margin-bottom: 25px;
         }
 
-        .modal-body li {
-            margin-bottom: 12px;
+        .accordion-item {
+            background: rgba(244, 247, 246, 0.6);
+            border: 1px solid rgba(32, 30, 91, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
         }
 
-        .modal-body strong {
-            color: #0f172a;
+        .accordion-item[open] {
+            background: rgba(32, 30, 91, 0.03);
+            border-color: rgba(32, 30, 91, 0.2);
         }
 
+        .accordion-item summary {
+            padding: 14px 16px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            cursor: pointer;
+            list-style: none; /* Elimina la flecha por defecto */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .accordion-item summary::-webkit-details-marker {
+            display: none; /* Elimina la flecha en Safari */
+        }
+
+        .accordion-item summary::after {
+            content: '+';
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item[open] summary::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 16px 16px 16px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* BOTONES DEL MODAL */
         .modal-buttons {
             display: flex;
             justify-content: flex-end;
@@ -275,72 +493,104 @@
             color: #475569;
             border: none;
             padding: 10px 18px;
-            border-radius: 8px;
+            border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
             transition: background 0.2s;
+            font-family: var(--font);
         }
 
         .btn-cancel:hover { background-color: #e2e8f0; }
 
         .btn-proceed {
-            background-color: #201E5B;
+            background-color: var(--accent);
             color: white;
             border: none;
             padding: 10px 18px;
-            border-radius: 8px;
+            border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
             transition: background 0.2s;
+            font-family: var(--font);
         }
 
-        .btn-proceed:hover { background-color: #161440; }
+        .btn-proceed:hover { background-color: var(--accent-hover); }
+
+        /* FOOTER */
+        .footer {
+            margin-top: auto;
+            padding-top: 4rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
 
         @media (max-width: 768px) {
-            .header-main { flex-direction: column; gap: 20px; text-align: center; }
-            .header-text { align-items: center; }
-            .title-buscador { font-size: 3.5rem; }
-            .animated-subtitle { font-size: 1.6rem; min-height: 2.2rem; }
-            .school-logo { max-height: 120px; }
-            .dashboard-container { grid-template-columns: repeat(2, 1fr); }
+            .header { gap: 1rem; margin-bottom: 2rem; flex-direction: column; padding: 2.5rem 1rem; }
+            .title-wrapper { margin-top: -10px; }
+            .title-buscador { font-size: 2.4rem; }
+            .lupa-icon { height: 1.8rem; }
+            .school-logo { max-height: 85px; }
+            .dashboard-container { grid-template-columns: repeat(1, 1fr); gap: 15px; }
+            form.gsc-search-box { display: flex; flex-direction: column; gap: 12px; }
+            .gsc-search-button-v2 { margin-left: 0 !important; width: 100%; padding: 12px !important; }
+            .gsc-results-wrapper-nooverlay.gsc-results-wrapper-visible { padding: 10px !important; }
             .modal-content { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="sketch-background"></div>
+
     <div class="header">
-        <div class="header-main">
-            <a href="#" onclick="window.location.reload(true); return false;" class="logo-link">
-                <img src="https://colegioeverest.github.io/BuscadorEverest/colegioeverest.png" alt="Logo Colegio Everest" class="school-logo">
-            </a>
-            <div class="header-text">
-                <div class="title-buscador">Buscador</div>
-                <div class="animated-subtitle">
-                    <!-- Esta lupa se mantiene igual ya que es parte del diseño de la palabra -->
-                    <img src="https://colegioeverest.github.io/BuscadorEverest/lupa.png" alt="Lupa" class="lupa-icon">
-                    <div class="typewriter-wrapper">
-                        <span id="typewriter-text"></span><span class="cursor"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="header-footer">
-            Development by EVERTICS &bull; Powered by Google &bull; <a href="https://www.colegioeverest.cl" target="_blank">colegioeverest.cl</a>
+        <a href="#" onclick="window.location.reload(true); return false;" class="logo-link">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/colegioeverest.png" alt="Logo Colegio Everest" class="school-logo">
+        </a>
+        <div class="title-wrapper">
+            <div class="title-buscador">EverticsSearch</div>
+            <img src="https://colegioeverest.github.io/BuscadorEverest/lupa.png" alt="Lupa" class="lupa-icon">
         </div>
     </div>
 
     <div class="search-container">
         <script async src="https://cse.google.com/cse.js?cx=85af81c8695ad4f52"></script>
-        <div class="gcse-search" data-linktarget="_self"></div>
+        <div class="gcse-search" data-linktarget="_blank"></div>
     </div>
 
     <div class="dashboard-container">
         
-        <a href="#" onclick="openAiModal(); return false;" class="shortcut-card ai-card" title="Asistente de IA">
-            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/perplexity.png" alt="IA Icono" class="card-icon">
-            <span>IA Perplexity</span>
-        </a>
+        <!-- Tarjeta Selector de IAs -->
+        <div class="shortcut-card ai-card">
+            <div class="ai-title-wrapper">
+                <span style="font-size: 1.05rem; color: var(--text-main);">Inteligencia Artificial y LLMs</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 400; line-height: 1.25;">* Sitios BLOQUEADOS. Se activan previa autorización del profesor *</span>
+            </div>
+            
+            <select id="aiChoice" class="glass-select">
+                <option value="https://www.perplexity.ai/academic/">Perplexity</option>
+                <option value="https://chatgpt.com/">ChatGPT</option>
+                <option value="https://claude.ai/">Claude</option>
+                <option value="https://gemini.google.com/">Google Gemini</option>
+                <option value="https://copilot.microsoft.com/">Microsoft Copilot</option>
+            </select>
+            
+            <button onclick="openAiModal()" class="ai-go-btn">Consultar</button>
+        </div>
 
         <a href="https://www.colegioeverest.cl" target="_blank" class="shortcut-card">
             <img src="https://colegioeverest.github.io/BuscadorEverest/cards/everest.png" alt="Colegio Icono" class="card-icon">
@@ -352,82 +602,51 @@
             <span>Lirmi Estudiantes</span>
         </a>
 
-        <a style="display: none;" href="https://outlook.office.com/" target="_blank" class="shortcut-card">
-            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/outlook.png" alt="Outlook Icono" class="card-icon">
-            <span>Outlook</span>
-        </a>
-
-        <a style="display: none;" href="https://onedrive.live.com/" target="_blank" class="shortcut-card">
-            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/onedrive.png" alt="OneDrive Icono" class="card-icon">
-            <span>OneDrive</span>
-        </a>
-
     </div>
 
-    <!-- ESTRUCTURA DEL MODAL DE ADVERTENCIA IA -->
+    <!-- ESTRUCTURA DEL MODAL DE ADVERTENCIA IA (CON LIST VIEW / ACORDEÓN) -->
     <div id="aiWarningModal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>⚠️ IMPORTANTE: Sobre uso de IA externa</h3>
+                <h3>⚠️ Sobre el uso de IA y chats LLM</h3>
             </div>
             <div class="modal-body">
-                <ul>
-                    <li><strong>Verifica la información:</strong> La Inteligencia Artificial puede consultar otros sitios webs que no están en el buscador, puede equivocarse o "alucinar" inventando datos que parecen reales pero que no lo son o que están sesgados. Siempre contrasta con fuentes oficiales.</li>
-                    <li><strong>Protege tu privacidad:</strong> Al ser un sitio externo, no ingreses datos personales, privados, nombres. Jamás ingreses contraseñas personales o del colegio.</li>
-                    <li><strong>Uso responsable:</strong> Utiliza esta herramienta solo para consultas rápidas o resumir conceptos, no para realizar tareas completas.</li>
-                    <li><strong>Links externos:</strong> La IA podrá hacer búsquedas de información e imágenes en diversos sitios, pero sólo podrás acceder a los sitios que los profesores hayan solicitado. ¡Recuerda verificar la información!.</li>
-                </ul>
+                <div class="accordion">
+                    <!-- Autorización requerida como primera regla (Abierta por defecto para resaltar) -->
+                    <details class="accordion-item" open>
+                        <summary>Autorización requerida</summary>
+                        <div class="accordion-content">Para que la página funcione, el PROFESOR DEBE SOLICITAR SU LIBERACIÓN CON ANTICIPACIÓN mediante la plataforma iPad Flow.</div>
+                    </details>
+                    
+                    <details class="accordion-item">
+                        <summary>Verifica la información</summary>
+                        <div class="accordion-content">La Inteligencia Artificial puede consultar otros sitios webs que no están en el buscador, puede equivocarse o "alucinar" inventando datos que parecen reales pero que no lo son o que están sesgados. Siempre contrasta con fuentes oficiales.</div>
+                    </details>
+                    
+                    <details class="accordion-item">
+                        <summary>Protege tu privacidad</summary>
+                        <div class="accordion-content">Al ser un sitio externo, NO ingreses datos personales, privados, nombres. JAMÁS ingreses contraseñas personales o del colegio.</div>
+                    </details>
+                    
+                    <details class="accordion-item">
+                        <summary>Uso responsable</summary>
+                        <div class="accordion-content">Utiliza esta herramienta solo para consultas rápidas o resumir conceptos, no para realizar tareas completas.</div>
+                    </details>
+                </div>
             </div>
             <div class="modal-buttons">
                 <button class="btn-cancel" onclick="closeAiModal()">Cancelar</button>
-                <button class="btn-proceed" onclick="proceedToAi()">Entendido, continuar</button>
+                <button class="btn-proceed" onclick="proceedToAi()">Entiendo, continuar</button>
             </div>
         </div>
     </div>
 
+    <div class="footer">
+        Development by EVERTICS &bull; Powered by Google &bull; <a href="https://www.colegioeverest.cl" target="_blank">www.colegioeverest.cl</a>
+    </div>
+
     <script>
-        // Animación de escritura
-        const words = ["Colegio Everest", "Juntos Somos Everest"];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typewriterElement = document.getElementById("typewriter-text");
-
-        function type() {
-            const currentWord = words[wordIndex];
-            
-            if (isDeleting) {
-                typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 50 : 100;
-
-            if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 2000; 
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 500; 
-            }
-
-            setTimeout(type, typeSpeed);
-        }
-
-        type();
-
-        setInterval(function() {
-            let escapeLinks = document.querySelectorAll('a[href*="google.com/search"]');
-            escapeLinks.forEach(function(link) { 
-                link.remove(); 
-            });
-        }, 1000);
-
-        // Lógica del Modal de IA
+        // Lógica del Modal y Selección de IA
         const modal = document.getElementById('aiWarningModal');
 
         function openAiModal() {
@@ -440,14 +659,66 @@
 
         function proceedToAi() {
             closeAiModal();
-            window.open('https://www.perplexity.ai/academic/', '_blank');
+            const selectedAiUrl = document.getElementById('aiChoice').value;
+            window.open(selectedAiUrl, '_blank');
         }
 
+        // Cierra el modal si se hace clic fuera del contenido
         window.onclick = function(event) {
             if (event.target == modal) {
                 closeAiModal();
             }
         }
+
+        // Animación de escritura en Google CSE
+        const words = ["Colegio Everest...", "Juntos Somos Everest..."];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let googleInput = null;
+
+        const checkInputInterval = setInterval(function() {
+            googleInput = document.querySelector('input.gsc-input');
+            if (googleInput) {
+                clearInterval(checkInputInterval);
+                type();
+            }
+        }, 100);
+
+        function type() {
+            if (!googleInput) return;
+            
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                charIndex--;
+            } else {
+                charIndex++;
+            }
+
+            let text = currentWord.substring(0, charIndex);
+            googleInput.setAttribute('placeholder', text + "|");
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 1500; 
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 400; 
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        
+        setInterval(function() {
+            let escapeLinks = document.querySelectorAll('a[href*="google.com/search"]');
+            escapeLinks.forEach(function(link) { 
+                link.remove(); 
+            });
+        }, 1000);
     </script>
 
 </body>
