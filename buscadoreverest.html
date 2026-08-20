@@ -559,26 +559,42 @@
 
     <div class="header">
         <a href="#" onclick="window.location.reload(true); return false;" class="logo-link">
-            <img src="https://colegioeverest.github.io/BuscadorEverest/colegioeverest.png" alt="Logo Colegio Everest" class="school-logo">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/colegioeverest.png" alt="Colegio Everest" class="school-logo">
         </a>
         <div class="title-wrapper">
             <div class="title-buscador">EverticsSearch</div>
             <img src="https://colegioeverest.github.io/BuscadorEverest/lupa.png" alt="Lupa" class="lupa-icon">
         </div>
     </div>
-
-    <div class="search-container">
-        <script async src="https://cse.google.com/cse.js?cx=85af81c8695ad4f52"></script>
-        <div class="gcse-search" data-linktarget="_blank"></div>
-    </div>
-
+	
     <div class="dashboard-container">
         
+        <a href="https://www.colegioeverest.cl" target="_blank" class="shortcut-card">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/everest.png" alt="Sitio Colegio Everest - Acceso directo" class="card-icon">
+            <span>Sitio web</span>
+        </a>
+
+        <a href="https://cse.google.com/cse?cx=85af81c8695ad4f52" target="_blank" class="shortcut-card">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/google.png" alt="Buscador de Google autorizado Colegio Everest" class="card-icon">
+            <span>Buscador Everest</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 400; line-height: 1.25;"> &bull; Powered by Google &bull; </span>
+        </a>
+
+        <a href="https://lirmi.com/cl/" target="_blank" class="shortcut-card">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/lirmi.png" alt="Lirmi - Acceso estudiantes" class="card-icon">
+            <span>Lirmi Estudiantes</span>
+        </a>
+		
+        <a href="https://lirmi.com/cl/" target="_blank" class="shortcut-card">
+            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/outlook.png" alt="Outlook - Acceso directo" class="card-icon">
+            <span>Outlook</span>
+        </a>
+		
         <!-- Tarjeta Selector de IAs -->
         <div class="shortcut-card ai-card">
             <div class="ai-title-wrapper">
                 <span style="font-size: 1.05rem; color: var(--text-main);">Inteligencia Artificial y LLMs</span>
-                <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 400; line-height: 1.25;">* Sitios BLOQUEADOS. Se activan previa autorización del profesor *</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 400; line-height: 1.25;"> &bull; Sitios BLOQUEADOS. Se activan previa autorización del profesor &bull; </span>
             </div>
             
             <select id="aiChoice" class="glass-select">
@@ -592,15 +608,6 @@
             <button onclick="openAiModal()" class="ai-go-btn">Consultar</button>
         </div>
 
-        <a href="https://www.colegioeverest.cl" target="_blank" class="shortcut-card">
-            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/everest.png" alt="Colegio Icono" class="card-icon">
-            <span>Sitio web</span>
-        </a>
-
-        <a href="https://lirmi.com/cl/" target="_blank" class="shortcut-card">
-            <img src="https://colegioeverest.github.io/BuscadorEverest/cards/lirmi.png" alt="Lirmi Icono" class="card-icon">
-            <span>Lirmi Estudiantes</span>
-        </a>
 
     </div>
 
@@ -642,7 +649,7 @@
     </div>
 
     <div class="footer">
-        Development by EVERTICS &bull; Powered by Google &bull; <a href="https://www.colegioeverest.cl" target="_blank">www.colegioeverest.cl</a>
+        Development by EVERTICS &bull; <a href="https://www.colegioeverest.cl" target="_blank">www.colegioeverest.cl</a>
     </div>
 
     <script>
